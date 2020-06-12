@@ -1,0 +1,21 @@
+{
+  "name": "antd-course",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "umi dev",
+    "build": "umi build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@umijs/preset-react": "^1.5.5",
+    "umi": "^3.2.3"
+  },
+  "dependencies": {
+    "@antv/g2": "^4.0.10",
+    "antd": "^4.3.0"
+  }
+}

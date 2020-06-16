@@ -42,7 +42,7 @@ export default {
             } catch (e) {
                 message.error('数据获取失败'); // 打印错误信息
             }
-        }
+        },
     },
     reducers: {
         addNewCard(state, { payload: newCard }) {

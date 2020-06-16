@@ -1,5 +1,5 @@
 import React from 'react';
-import G2 from '@antv/g2';
+import {Chart} from '@antv/g2';
 
 class SampleChart extends React.Component {
     constructor(props) {
@@ -9,7 +9,7 @@ class SampleChart extends React.Component {
 
     componentDidMount() {
         // G2 初始化图形代码
-        this.chart = new G2.Chart({
+        this.chart = new Chart({
             // this.containerRef.current 即为引用
             container: this.containerRef.current,
             width: 450,

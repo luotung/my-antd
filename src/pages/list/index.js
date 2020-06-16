@@ -2,7 +2,7 @@ import React from 'react';
 import { Table, Button, Modal, Form, Input } from 'antd';
 import { connect } from 'dva';
 
-import SampleChart from '../../components/SampleChart.js';
+import SampleChart from '../../components/SampleChart';
 
 const namespace = 'cards';
 
@@ -26,6 +26,13 @@ const mapDispatchToProps = (dispatch) => {
             const action = {
                 type: `${namespace}/addOne`,
                 payload: card,
+            };
+            dispatch(action);
+        },
+        getStatistic: (id) => {
+            const action = {
+                type: `${namespace}/getStatistic`,
+                payload: id,
             };
             dispatch(action);
         },
@@ -62,7 +69,7 @@ class List extends React.Component {
         },
         {
             title: '',
-            dataIndex: '_',
+            dataIndex: 'statistic',
             render: (_, { id }) => {
                 return (
                     <Button onClick={() => { this.showStatistic(id); }}>图表</Button>
@@ -72,10 +79,7 @@ class List extends React.Component {
     ];
 
     showStatistic = (id) => {
-        this.props.dispatch({
-            type: `${namespace}/getStatistic`,
-            payload: id,
-        });
+        this.props.getStatistic(id);
         // 更新 state，弹出包含图表的对话框
         this.setState({ id, statisticVisible: true });
     };
@@ -111,7 +115,7 @@ class List extends React.Component {
 
         return (
             <div>
-                <Table columns={this.columns} dataSource={cardsList} loading={cardsLoading} />
+                <Table columns={this.columns} dataSource={cardsList} loading={cardsLoading} rowKey="id" />
                 <Button onClick={this.showModal}>新建</Button>
                 <Modal
                     title='新建记录'
